@@ -26,7 +26,17 @@ func main (){
     if err != nil{
         fmt.Println("Error while reading the records")
     }
-    parseRecords(records)
+    problems := parseRecords(records)
+    for i, p := range problems{
+        fmt.Printf("Problem %d: %s = \n", i+1, p.q)
+        var answer string
+        fmt.Scanf("%s\n", &answer)
+        if answer == p.a {
+            fmt.Println("Correct")
+        } else {
+            fmt.Println("Incorrect")
+        }
+    }
 }
 
 func parseRecords(records [][]string) []problem{
@@ -37,7 +47,6 @@ func parseRecords(records [][]string) []problem{
             a: record[1],
         }
     }
-    fmt.Println(ret)
     return ret
 }
 
