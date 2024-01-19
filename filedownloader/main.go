@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-func downloadFile(fileName string, urlPath string)(err error){
+func downloadFile( urlPath string)(err error){
     //Build filename from the url path
     fileUrl, err := url.Parse(urlPath)
     if err != nil {
@@ -18,7 +18,7 @@ func downloadFile(fileName string, urlPath string)(err error){
     }
     path := fileUrl.Path
     segments := strings.Split(path, "/")
-    fileName = segments[len(segments)-1]
+    fileName := segments[len(segments)-1]
 
     //Create the downloadFile
     file, err := os.Create(fileName)
@@ -53,6 +53,6 @@ func downloadFile(fileName string, urlPath string)(err error){
 
 func main(){
    fmt.Println("THello from the moon")
-    downloadFile("robots", "http://www.google.com/robots.txt")
+    downloadFile("https://www.google.com/robots.txt")
 
 }
